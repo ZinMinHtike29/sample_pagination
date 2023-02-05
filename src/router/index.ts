@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ResultPage from "@/views/ResultPage.vue"
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/result/searchKey=:searchKey',
+    name: 'result',
+    component: ResultPage,
   },
   {
     path: '/about',
