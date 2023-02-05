@@ -109,7 +109,19 @@ export default {
   },
   methods: {
     changePage(v) {
-      let url = `http://localhost/TestServer/public/api/searchResult?searchKey=${this.$route.params.searchKey}&page=${v.label}`;
+      let page;
+      switch (v.label) {
+        case "Next":
+          page = this.currentPage * 1 + 1;
+          break;
+        case "Previous":
+          page = this.currentPage * 1 - 1;
+          break;
+        default:
+          page = v.label;
+          break;
+      }
+      let url = `http://localhost/TestServer/public/api/searchResult?searchKey=${this.$route.params.searchKey}&page=${page}`;
       axios.get(url).then((res) => {
         this.$emit("data", res.data);
       });
