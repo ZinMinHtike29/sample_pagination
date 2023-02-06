@@ -17,7 +17,7 @@
             block
             md:hidden
           "
-          @click="resChangePage(pagLink[0])"
+          @click="changePage(pagLink[0])"
         >
           {{ pagLink[0].label }}
         </button>
@@ -36,12 +36,13 @@
             block
             md:hidden
           "
-          @click="resChangePage(pagLink[pagLink.length - 1])"
+          @click="changePage(pagLink[pagLink.length - 1])"
         >
           {{ pagLink[pagLink.length - 1].label }}
         </button>
       </div>
       <nav aria-label="Page navigation example">
+        
         <ul class="list-style-none hidden md:flex">
           <li
             class="page-item"
@@ -122,17 +123,6 @@ export default {
           break;
       }
       let url = `http://localhost/TestServer/public/api/searchResult?searchKey=${this.$route.params.searchKey}&page=${page}`;
-      axios.get(url).then((res) => {
-        this.$emit("data", res.data);
-      });
-    },
-    resChangePage(v) {
-      if (v.label == "Previous") {
-        this.currentPage = this.currentPage - 1;
-      } else {
-        this.currentPage = this.currentPage * 1 + 1;
-      }
-      let url = `http://localhost/TestServer/public/api/searchResult?searchKey=${this.$route.params.searchKey}&page=${this.currentPage}`;
       axios.get(url).then((res) => {
         this.$emit("data", res.data);
       });
