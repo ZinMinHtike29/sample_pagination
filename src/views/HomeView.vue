@@ -94,7 +94,6 @@ export default {
   methods: {
     detactInput() {
       clearTimeout(this.timer);
-      console.log("detacting");
     },
     searchData() {
       clearTimeout(this.timer);
@@ -107,7 +106,6 @@ export default {
           })
           .then((res) => {
             this.fetchStatus = false;
-            console.log(res.data.searchUser);
             this.userList = res.data.searchUser;
             // // console.log(this.searchList);
           });
